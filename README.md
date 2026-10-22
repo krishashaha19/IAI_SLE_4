@@ -6,11 +6,21 @@
 **Course:** 02AML204 – Introduction to Artificial Intelligence  
 **Date:** 13 October 2026
 
-## Submission files
-- [SLE-4 ADR report](SLE4_25UAM070_Krisha_Champalal_Shaha.md) — complete ADR, SLE journey summary, AI contribution note, and viva preparation notes.
+## Repository files
+- [C4 Architecture — all four levels with diagrams](C4_ARCHITECTURE.md)
+- [SLE-4 ADR report](SLE4_25UAM070_Krisha_Champalal_Shaha.md) — decision, alternatives, rationale, consequences, SLE journey, AI contribution note, and viva preparation.
 - [AI Contribution Log](CONTRIBUTION_LOG.md) — work record and AI-use disclosure.
 
-## Decision in brief
+## C4 diagrams included
+The C4 architecture file contains:
+1. **Level 1 — Context:** User and Maze Solver system boundary.
+2. **Level 2 — Container:** Input, Search Engine, Heuristic, Memory / Visited Set, and Output.
+3. **Level 3 — Component:** Frontier Manager, Successor Function, Goal Test Checker, and Path Reconstructor inside the Search Engine.
+4. **Level 4 — Code:** Node, MazeProblem, get_neighbors, heuristic, solve_astar, and reconstruct_path.
+
+GitHub renders the Mermaid diagrams directly in the C4 architecture file.
+
+## SLE-4 decision in brief
 The ADR records the decision to maintain a **visited set** and check whether a state has already been explored before expanding it. This supports BFS and DFS and matches the **Memory / Visited Set** responsibility in the SLE-3 C4 architecture.
 
 ## SLE-2 evidence
