@@ -1,4 +1,4 @@
-# Contribution Log — SLE-4
+# AI Contribution Log — SLE-4
 
 **Student:** Krisha Champalal Shaha  
 **PRN:** 25UAM070  
@@ -8,11 +8,11 @@
 | Work item | Contribution / record |
 |---|---|
 | Review previous SLE work | Connected the SLE-2 BFS/DFS experiment and SLE-3 Interactive Maze Solver to the SLE-4 architecture decision. |
-| Identify the problem | Noted that the same state may be reached more than once during search, causing repeated expansion or cycles. |
-| Record the decision | Selected a visited set and documented checking whether a state has already been explored before expanding it. |
+| Identify the problem | Recorded that the same state can be reached more than once, leading to repeated expansion or cycles. |
+| Select and document the decision | Documented a visited set and checking a state before expanding it again. |
 | Consider alternatives | Compared no visited tracking, list-based tracking, and set-based tracking. |
-| Record evidence | Included the reported seven-node test results: BFS average 0.006706 ms, DFS average 0.011268 ms, and 7.00 average nodes expanded for both. These are specific to the small test graph. |
-| Document trade-offs | Recorded that a visited set reduces duplicate work and has O(1) average membership lookup, while using additional memory and requiring consistent state representation. |
-| Prepare for viva | Prepared a short explanation of the visited set, its benefit, its memory trade-off, and how it fits the SLE-3 Memory / Visited Set component. |
-| AI assistance disclosure | ChatGPT was used to help organize and clarify the documentation and viva explanation. The student should verify the final submission and be able to explain the decision and evidence independently. |
+| Use evidence carefully | Included the reported seven-node test results: BFS average 0.006706 ms, DFS average 0.011268 ms, and 7.00 average nodes expanded for both. These measurements apply only to the small test graph and are not a universal ranking. |
+| Explain trade-offs | Recorded reduced duplicate expansion and O(1) average membership lookup, balanced against extra memory and the need for consistent state representation. |
+| Prepare for viva | Prepared short explanations of the visited set, alternatives, SLE-2 measurements, SLE-3 C4 responsibilities, and trade-offs. |
+| AI assistance disclosure | ChatGPT helped organize and clarify the ADR and viva notes. The student connected the decision to the previous SLE work and is responsible for checking the report against the actual implementation, verifying the measurements, and explaining the decision independently. |
 
