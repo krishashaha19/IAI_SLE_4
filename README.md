@@ -1,35 +1,65 @@
-# SLE-4 — Architecture Decision Record (ADR)
+# SLE-4: Architecture Decision Record (ADR)
 
-**Student:** Krisha Champalal Shaha  
-**PRN:** 25UAM070  
-**Division:** A  
-**Course:** 02AML204 – Introduction to Artificial Intelligence  
-**Date:** 13 October 2026
+## Project Title
+**Use a Visited Set to Avoid Repeated State Expansion**
 
-## Submission files
-- [SLE-4 ADR report](SLE4_25UAM070_Krisha_Champalal_Shaha.md) — complete ADR, SLE journey summary, AI contribution note, and viva preparation notes.
-- [AI Contribution Log](CONTRIBUTION_LOG.md) — work record and AI-use disclosure.
+## Student Details
+- **Name:** Krisha Champalal Shaha
+- **PRN:** 25UAM070
+- **Division:** A
+- **Course:** 02AML204 – Introduction to Artificial Intelligence
 
-## Decision in brief
-The ADR records the decision to maintain a **visited set** and check whether a state has already been explored before expanding it. This supports BFS and DFS and matches the **Memory / Visited Set** responsibility in the SLE-3 C4 architecture.
+## 1. Project Overview
+This project explains the use of a visited set in search algorithms such as Breadth-First Search (BFS) and Depth-First Search (DFS). It is related to the Interactive Maze Solver designed in SLE-3.
 
-## SLE-2 evidence
-The reported seven-node graph experiment recorded:
-- BFS average execution time: **0.006706 ms**
-- DFS average execution time: **0.011268 ms**
-- Average nodes expanded: **7.00** for both
+During graph or maze searching, the same state may be reached multiple times. A visited set helps avoid repeated exploration and unnecessary work.
 
-These results describe only this small test graph; they do not prove that BFS is always faster than DFS.
+## 2. Problem Statement
+Without visited-state tracking, search algorithms may repeatedly expand the same states and waste computational resources. In cyclic graphs, this can also cause unnecessary looping.
 
-## SLE journey
-- **SLE-1:** Search-agent/code task and supporting README/contribution documentation.
-- **SLE-2:** BFS/DFS profiling and comparison.
-- **SLE-3:** Interactive Maze Solver and C4 architecture.
-- **SLE-4:** Written justification of the visited-set decision and viva preparation.
+## 3. Architecture Decision
+**Decision:** Use a set-based visited structure to track explored states.
 
-## Viva explanation
-A visited set stores states that have already been explored. It prevents repeated expansion and helps avoid cycles. Membership lookup in a set is O(1) on average, but the set uses additional memory.
+Before expanding a state, the search algorithm checks whether it has already been visited. If it has, the state is not expanded again.
 
-## References
-- [SLE-2 repository](https://github.com/krishashaha19/IAI_SLE2)
-- [SLE-3 repository](https://github.com/krishashaha19/IAI_SLE3)
+## 4. Alternatives Considered
+
+1. **No visited tracking:** Simple to implement, but can cause repeated exploration and cycling.
+2. **List-based tracking:** Easy to understand, but membership checks generally take linear time.
+3. **Set-based tracking:** Selected because membership checks take O(1) time on average.
+
+## 5. Performance Observations
+
+The SLE-2 experiment compared BFS and DFS on a seven-node graph, starting at A and searching for G.
+
+| Algorithm | Average Execution Time | Average Nodes Expanded |
+|---|---:|---:|
+| BFS | 0.006706 ms | 7 |
+| DFS | 0.011268 ms | 7 |
+
+These results apply only to the tested graph and do not establish that one algorithm is always faster.
+
+## 6. Advantages
+- Avoids repeated state expansion.
+- Helps prevent unnecessary cycling.
+- Provides efficient average membership checks.
+- Improves the organization of search logic.
+- Supports modular architecture.
+
+## 7. Limitations
+- Requires additional memory to store visited states.
+- States must have consistent representations.
+- Overall performance depends on the search algorithm and problem size.
+
+## 8. SLE Journey
+- **SLE-1:** Worked on the search-agent/code task and supporting documentation.
+- **SLE-2:** Compared BFS and DFS on a seven-node graph.
+- **SLE-3:** Designed an Interactive Maze Solver using four C4 architecture levels.
+- **SLE-4:** Documented the decision to use a set for visited-state tracking.
+
+## 9. AI Contribution
+ChatGPT was used to clarify the ADR structure, explain alternative approaches, and organize the report and viva notes. The student is responsible for verifying the implementation, measurements, and final documentation.
+
+## 10. References
+- [SLE-2 Repository](https://github.com/krishashaha19/IAI_SLE2)
+- [SLE-3 Repository](https://github.com/krishashaha19/IAI_SLE3)
